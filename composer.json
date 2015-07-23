@@ -1,0 +1,13 @@
+{
+    "name": "voxsim/php-tennis-refactoring-kata",
+    "description": "Php Tennis Refactoring Kata",
+    "require": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "authors": [
+        {
+            "name": "Simon Vocella",
+            "email": "voxsim@gmail.com"
+        }
+    ]
+}
