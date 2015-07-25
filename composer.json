@@ -1,13 +1,20 @@
 {
     "name": "voxsim/php-tennis-refactoring-kata",
     "description": "Php Tennis Refactoring Kata",
-    "require": {
-        "phpunit/phpunit": "^4.7"
-    },
+    "license": "MIT",
     "authors": [
         {
             "name": "Simon Vocella",
             "email": "voxsim@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "autoload": {
+	"classmap": [
+	    "tests",
+	    "."
+	]
+    }
 }

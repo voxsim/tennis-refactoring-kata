@@ -6,7 +6,6 @@ class TennisGame2 implements TennisGame
 {
 	private $P1point = 0;
 	private $P2point = 0;
-
 	private $P1res = "";
 	private $P2res = "";
 	private $player1Name = "";
@@ -98,21 +97,6 @@ class TennisGame2 implements TennisGame
 		}
 
 		return $score;
-	}
-
-	private function SetP1Score($number)
-	{
-		for ($i = 0; $i < $number; $i++) {
-			$this->P1Score();
-		}
-
-	}
-
-	private function SetP2Score($number)
-	{
-		for ($i = 0; $i < $number; $i++) {
-			$this->P2Score();
-		}
 	}
 
 	private function P1Score()

@@ -1,8 +1,5 @@
 <?php
 
-require_once 'TestMaster.php';
-require_once "../TennisGame1.php";
-
 /**
  * TennisGame1 test case.
  */

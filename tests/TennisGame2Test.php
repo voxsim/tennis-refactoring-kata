@@ -1,10 +1,7 @@
 <?php
 
-require_once 'TestMaster.php';
-require_once "../TennisGame2.php";
-
 /**
- * TennisGame1 test case.
+ * TennisGame2 test case.
  */
 class TennisGame2Test extends TestMaster
 {
