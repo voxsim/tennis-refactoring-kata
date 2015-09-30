@@ -7,8 +7,6 @@ class TennisGame2 implements TennisGame
 {
     private $P1point;
     private $P2point;
-    private $P1res = "";
-    private $P2res = "";
     private $player1Name = "";
     private $player2Name = "";
 
@@ -23,6 +21,8 @@ class TennisGame2 implements TennisGame
     public function getScore()
     {
         $score = "";
+        $P1res = "";
+        $P2res = "";
         if ($this->P1point->get() == $this->P2point->get() && $this->P1point->get() < 4) {
             if ($this->P1point->get()==0)
                 $score = "Love-All";
@@ -37,49 +37,49 @@ class TennisGame2 implements TennisGame
 
         if ($this->P1point->get() > 0 && $this->P2point->get() == 0) {
             if ($this->P1point->get() == 1)
-                $this->P1res = "Fifteen";
+                $P1res = "Fifteen";
             if ($this->P1point->get() == 2)
-                $this->P1res = "Thirty";
+                $P1res = "Thirty";
             if ($this->P1point->get() == 3)
-                $this->P1res = "Forty";
+                $P1res = "Forty";
 
-            $this->P2res = "Love";
-            $score = "{$this->P1res}-{$this->P2res}";
+            $P2res = "Love";
+            $score = "{$P1res}-{$P2res}";
         }
 
         if ($this->P2point->get() > 0 && $this->P1point->get() == 0) {
             if ($this->P2point->get() == 1)
-                $this->P2res = "Fifteen";
+                $P2res = "Fifteen";
             if ($this->P2point->get() == 2)
-                $this->P2res = "Thirty";
+                $P2res = "Thirty";
             if ($this->P2point->get() == 3)
-                $this->P2res = "Forty";
-            $this->P1res = "Love";
-            $score = "{$this->P1res}-{$this->P2res}";
+                $P2res = "Forty";
+            $P1res = "Love";
+            $score = "{$P1res}-{$P2res}";
         }
 
         if ($this->P1point->get() > $this->P2point->get() && $this->P1point->get() < 4) {
             if ($this->P1point->get() == 2)
-                $this->P1res = "Thirty";
+                $P1res = "Thirty";
             if ($this->P1point->get() == 3)
-                $this->P1res = "Forty";
+                $P1res = "Forty";
             if ($this->P2point->get() == 1)
-                $this->P2res = "Fifteen";
+                $P2res = "Fifteen";
             if ($this->P2point->get() == 2)
-                $this->P2res = "Thirty";
-            $score = "{$this->P1res}-{$this->P2res}";
+                $P2res = "Thirty";
+            $score = "{$P1res}-{$P2res}";
         }
 
         if ($this->P2point->get() > $this->P1point->get() && $this->P2point->get() < 4) {
             if ($this->P2point->get() == 2)
-                $this->P2res = "Thirty";
+                $P2res = "Thirty";
             if ($this->P2point->get() == 3)
-                $this->P2res = "Forty";
+                $P2res = "Forty";
             if ($this->P1point->get() == 1)
-                $this->P1res = "Fifteen";
+                $P1res = "Fifteen";
             if ($this->P1point->get() == 2)
-                $this->P1res = "Thirty";
-            $score = "{$this->P1res}-{$this->P2res}";
+                $P1res = "Thirty";
+            $score = "{$P1res}-{$P2res}";
         }
 
         if ($this->P1point->get() > $this->P2point->get() && $this->P2point->get() >= 3) {
