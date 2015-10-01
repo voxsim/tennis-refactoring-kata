@@ -36,25 +36,20 @@ class TennisGame2 implements TennisGame
 
         if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
             if ($this->points[$this->player1Name]->get() == 1)
-                $P1res = "Fifteen";
+                return "Fifteen-Love";
             if ($this->points[$this->player1Name]->get() == 2)
-                $P1res = "Thirty";
+                return "Thirty-Love";
             if ($this->points[$this->player1Name]->get() == 3)
-                $P1res = "Forty";
-
-            $P2res = "Love";
-            $score = "{$P1res}-{$P2res}";
+                return "Forty-Love";
         }
 
         if ($this->points[$this->player2Name]->get() > 0 && $this->points[$this->player1Name]->get() == 0) {
             if ($this->points[$this->player2Name]->get() == 1)
-                $P2res = "Fifteen";
+                return "Love-Fifteen";
             if ($this->points[$this->player2Name]->get() == 2)
-                $P2res = "Thirty";
+                return "Love-Thirty";
             if ($this->points[$this->player2Name]->get() == 3)
-                $P2res = "Forty";
-            $P1res = "Love";
-            $score = "{$P1res}-{$P2res}";
+                return "Love-Forty";
         }
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
