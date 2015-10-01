@@ -3,6 +3,8 @@
 require_once "TennisGame.php";
 require_once "Score.php";
 require_once "Display.php";
+require_once "score/HumanReadableScore.php";
+require_once "score/LoveAll.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -108,22 +110,3 @@ class TennisGame2 implements TennisGame
             $this->display->player2WonPoint();
     }
 }
-
-interface HumanReadableScore {
-    public function value();
-}
-
-class LoveAll implements HumanReadableScore {
-    public function value() {
-        return "Love-All";
-    }
-
-    public function player1WonPoint() {
-        return $this;
-    }
-
-    public function player2WonPoint() {
-        return $this;
-    }
-}
-
