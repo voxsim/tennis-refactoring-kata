@@ -1,8 +1,8 @@
 <?php
 
-class LoveThirty implements HumanReadableScore {
+class LoveForty implements HumanReadableScore {
     public function value() {
-        return "Love-Thirty";
+        return "Love-Forty";
     }
 
     public function player1WonPoint() {
@@ -10,6 +10,6 @@ class LoveThirty implements HumanReadableScore {
     }
 
     public function player2WonPoint() {
-        return new LoveForty();
+        return $this;
     }
 }
