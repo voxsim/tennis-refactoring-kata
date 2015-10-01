@@ -6,10 +6,10 @@ class LoveAll implements HumanReadableScore {
     }
 
     public function player1WonPoint() {
-        return $this;
+        return new FifteenLove();
     }
 
     public function player2WonPoint() {
-        return $this;
+        return new LoveFifteen();
     }
 }

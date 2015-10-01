@@ -5,6 +5,8 @@ require_once "Score.php";
 require_once "Display.php";
 require_once "score/HumanReadableScore.php";
 require_once "score/LoveAll.php";
+require_once "score/LoveFifteen.php";
+require_once "score/FifteenLove.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -41,7 +43,7 @@ class TennisGame2 implements TennisGame
 
         if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
             if ($this->points[$this->player1Name]->get() == 1)
-                return "Fifteen-Love";
+                return $this->display->show();
             if ($this->points[$this->player1Name]->get() == 2)
                 return "Thirty-Love";
             if ($this->points[$this->player1Name]->get() == 3)
@@ -50,7 +52,7 @@ class TennisGame2 implements TennisGame
 
         if ($this->points[$this->player2Name]->get() > 0 && $this->points[$this->player1Name]->get() == 0) {
             if ($this->points[$this->player2Name]->get() == 1)
-                return "Love-Fifteen";
+                return $this->display->show();
             if ($this->points[$this->player2Name]->get() == 2)
                 return "Love-Thirty";
             if ($this->points[$this->player2Name]->get() == 3)
