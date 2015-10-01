@@ -11,7 +11,7 @@ class Score {
         return $this->value;
     }
 
-    public function add() {
+    public function increment() {
         $this->value++;
     }
 

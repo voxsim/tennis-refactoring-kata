@@ -102,6 +102,6 @@ class TennisGame2 implements TennisGame
 
     public function wonPoint($player)
     {
-        $this->points[$player]->add();
+        $this->points[$player]->increment();
     }
 }
