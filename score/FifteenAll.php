@@ -1,12 +1,12 @@
 <?php
 
-class LoveFifteen implements HumanReadableScore {
+class FifteenAll implements HumanReadableScore {
     public function value() {
-        return "Love-Fifteen";
+        return "Fifteen-All";
     }
 
     public function player1WonPoint() {
-        return new FifteenAll();
+        return $this;
     }
 
     public function player2WonPoint() {
