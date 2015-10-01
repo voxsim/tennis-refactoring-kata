@@ -6,7 +6,7 @@ class FifteenLove implements HumanReadableScore {
     }
 
     public function player1WonPoint() {
-        return $this;
+        return new ThirtyLove();
     }
 
     public function player2WonPoint() {
