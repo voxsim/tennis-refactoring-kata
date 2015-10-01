@@ -8,6 +8,7 @@ class TennisGame2 implements TennisGame
     private $points;
     private $player1Name = "";
     private $player2Name = "";
+    private $display = "";
 
     public function __construct($player1Name, $player2Name)
     {
@@ -15,6 +16,7 @@ class TennisGame2 implements TennisGame
         $this->player2Name = $player2Name;
         $this->points[$this->player1Name] = Score::create();
         $this->points[$this->player2Name] = Score::create();
+        $this->display = Display::create();
     }
 
     public function getScore()
@@ -24,7 +26,7 @@ class TennisGame2 implements TennisGame
         $P2res = "";
         if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
             if ($this->points[$this->player1Name]->get()==0)
-                return "Love-All";
+                return $this->display->show();
             if ($this->points[$this->player1Name]->get()==1)
                 return "Fifteen-All";
             if ($this->points[$this->player1Name]->get()==2)
@@ -98,5 +100,52 @@ class TennisGame2 implements TennisGame
     public function wonPoint($player)
     {
         $this->points[$player]->increment();
+
+        if($player == $this->player1Name)
+            $this->display->player1WonPoint();
+        else
+            $this->display->player2WonPoint();
+    }
+}
+
+interface HumanReadableScore {
+    public function value();
+}
+
+class LoveAll implements HumanReadableScore {
+    public function value() {
+        return "Love-All";
+    }
+
+    public function player1WonPoint() {
+        return $this;
+    }
+
+    public function player2WonPoint() {
+        return $this;
+    }
+}
+
+class Display {
+    private $humanReadableScore;
+
+    public function __construct($humanReadableScore) {
+        $this->humanReadableScore = $humanReadableScore;
+    }
+
+    public function show() {
+        return $this->humanReadableScore->value();
+    }
+
+    public function player1WonPoint() {
+        $this->humanReadableScore = $this->humanReadableScore->player1WonPoint();
+    }
+
+    public function player2WonPoint() {
+        $this->humanReadableScore = $this->humanReadableScore->player2WonPoint();
+    }
+
+    static public function create() {
+        return new Display(new LoveAll());
     }
 }
