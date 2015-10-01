@@ -5,8 +5,7 @@ require_once "Score.php";
 
 class TennisGame2 implements TennisGame
 {
-    private $P1point;
-    private $P2point;
+    private $points;
     private $player1Name = "";
     private $player2Name = "";
 
@@ -14,8 +13,8 @@ class TennisGame2 implements TennisGame
     {
         $this->player1Name = $player1Name;
         $this->player2Name = $player2Name;
-        $this->P1point = Score::create();
-        $this->P2point = Score::create();
+        $this->points[$this->player1Name] = Score::create();
+        $this->points[$this->player2Name] = Score::create();
     }
 
     public function getScore()
@@ -23,99 +22,86 @@ class TennisGame2 implements TennisGame
         $score = "";
         $P1res = "";
         $P2res = "";
-        if ($this->P1point->get() == $this->P2point->get() && $this->P1point->get() < 4) {
-            if ($this->P1point->get()==0)
+        if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
+            if ($this->points[$this->player1Name]->get()==0)
                 $score = "Love-All";
-            if ($this->P1point->get()==1)
+            if ($this->points[$this->player1Name]->get()==1)
                 $score = "Fifteen-All";
-            if ($this->P1point->get()==2)
+            if ($this->points[$this->player1Name]->get()==2)
                 $score = "Thirty-All";
         }
 
-        if ($this->P1point->get() == $this->P2point->get() && $this->P1point->get() >= 3)
+        if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() >= 3)
             $score = "Deuce";
 
-        if ($this->P1point->get() > 0 && $this->P2point->get() == 0) {
-            if ($this->P1point->get() == 1)
+        if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
+            if ($this->points[$this->player1Name]->get() == 1)
                 $P1res = "Fifteen";
-            if ($this->P1point->get() == 2)
+            if ($this->points[$this->player1Name]->get() == 2)
                 $P1res = "Thirty";
-            if ($this->P1point->get() == 3)
+            if ($this->points[$this->player1Name]->get() == 3)
                 $P1res = "Forty";
 
             $P2res = "Love";
             $score = "{$P1res}-{$P2res}";
         }
 
-        if ($this->P2point->get() > 0 && $this->P1point->get() == 0) {
-            if ($this->P2point->get() == 1)
+        if ($this->points[$this->player2Name]->get() > 0 && $this->points[$this->player1Name]->get() == 0) {
+            if ($this->points[$this->player2Name]->get() == 1)
                 $P2res = "Fifteen";
-            if ($this->P2point->get() == 2)
+            if ($this->points[$this->player2Name]->get() == 2)
                 $P2res = "Thirty";
-            if ($this->P2point->get() == 3)
+            if ($this->points[$this->player2Name]->get() == 3)
                 $P2res = "Forty";
             $P1res = "Love";
             $score = "{$P1res}-{$P2res}";
         }
 
-        if ($this->P1point->get() > $this->P2point->get() && $this->P1point->get() < 4) {
-            if ($this->P1point->get() == 2)
+        if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
+            if ($this->points[$this->player1Name]->get() == 2)
                 $P1res = "Thirty";
-            if ($this->P1point->get() == 3)
+            if ($this->points[$this->player1Name]->get() == 3)
                 $P1res = "Forty";
-            if ($this->P2point->get() == 1)
+            if ($this->points[$this->player2Name]->get() == 1)
                 $P2res = "Fifteen";
-            if ($this->P2point->get() == 2)
+            if ($this->points[$this->player2Name]->get() == 2)
                 $P2res = "Thirty";
             $score = "{$P1res}-{$P2res}";
         }
 
-        if ($this->P2point->get() > $this->P1point->get() && $this->P2point->get() < 4) {
-            if ($this->P2point->get() == 2)
+        if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player2Name]->get() < 4) {
+            if ($this->points[$this->player2Name]->get() == 2)
                 $P2res = "Thirty";
-            if ($this->P2point->get() == 3)
+            if ($this->points[$this->player2Name]->get() == 3)
                 $P2res = "Forty";
-            if ($this->P1point->get() == 1)
+            if ($this->points[$this->player1Name]->get() == 1)
                 $P1res = "Fifteen";
-            if ($this->P1point->get() == 2)
+            if ($this->points[$this->player1Name]->get() == 2)
                 $P1res = "Thirty";
             $score = "{$P1res}-{$P2res}";
         }
 
-        if ($this->P1point->get() > $this->P2point->get() && $this->P2point->get() >= 3) {
+        if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
             $score = "Advantage player1";
         }
 
-        if ($this->P2point->get() > $this->P1point->get() && $this->P1point->get() >= 3) {
+        if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player1Name]->get() >= 3) {
             $score = "Advantage player2";
         }
 
-        if ($this->P1point->get() >= 4 && $this->P2point->get() >= 0 && ($this->P1point->get() - $this->P2point->get()) >= 2) {
+        if ($this->points[$this->player1Name]->get() >= 4 && $this->points[$this->player2Name]->get() >= 0 && ($this->points[$this->player1Name]->get() - $this->points[$this->player2Name]->get()) >= 2) {
             $score = "Win for player1";
         }
 
-        if ($this->P2point->get() >= 4 && $this->P1point->get() >= 0 && ($this->P2point->get() - $this->P1point->get()) >= 2) {
+        if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
             $score = "Win for player2";
         }
 
         return $score;
     }
 
-    private function P1Score()
-    {
-        $this->P1point->add();
-    }
-
-    private function P2Score()
-    {
-        $this->P2point->add();
-    }
-
     public function wonPoint($player)
     {
-        if ($player == "player1")
-            $this->P1Score();
-        else
-            $this->P2Score();
+        $this->points[$player]->add();
     }
 }
