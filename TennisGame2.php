@@ -24,15 +24,15 @@ class TennisGame2 implements TennisGame
         $P2res = "";
         if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
             if ($this->points[$this->player1Name]->get()==0)
-                $score = "Love-All";
+                return "Love-All";
             if ($this->points[$this->player1Name]->get()==1)
-                $score = "Fifteen-All";
+                return "Fifteen-All";
             if ($this->points[$this->player1Name]->get()==2)
-                $score = "Thirty-All";
+                return "Thirty-All";
         }
 
         if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() >= 3)
-            $score = "Deuce";
+            return "Deuce";
 
         if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
             if ($this->points[$this->player1Name]->get() == 1)
@@ -81,20 +81,20 @@ class TennisGame2 implements TennisGame
             $score = "{$P1res}-{$P2res}";
         }
 
-        if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
-            $score = "Advantage player1";
-        }
-
-        if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player1Name]->get() >= 3) {
-            $score = "Advantage player2";
-        }
-
         if ($this->points[$this->player1Name]->get() >= 4 && $this->points[$this->player2Name]->get() >= 0 && ($this->points[$this->player1Name]->get() - $this->points[$this->player2Name]->get()) >= 2) {
-            $score = "Win for player1";
+            return "Win for player1";
         }
 
         if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
-            $score = "Win for player2";
+            return "Win for player2";
+        }
+
+        if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
+            return "Advantage player1";
+        }
+
+        if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player1Name]->get() >= 3) {
+            return "Advantage player2";
         }
 
         return $score;
