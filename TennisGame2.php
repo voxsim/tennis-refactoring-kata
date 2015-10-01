@@ -9,6 +9,7 @@ require_once "score/LoveFifteen.php";
 require_once "score/FifteenLove.php";
 require_once "score/FifteenAll.php";
 require_once "score/ThirtyLove.php";
+require_once "score/LoveThirty.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -45,6 +46,10 @@ class TennisGame2 implements TennisGame
             return "Win for player1";
         }
 
+        if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
+            return "Win for player2";
+        }
+
         if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
             if ($this->points[$this->player1Name]->get() == 3)
                 return "Forty-Love";
@@ -53,12 +58,10 @@ class TennisGame2 implements TennisGame
         }
 
         if ($this->points[$this->player2Name]->get() > 0 && $this->points[$this->player1Name]->get() == 0) {
-            if ($this->points[$this->player2Name]->get() == 1)
-                return $this->display->show();
-            if ($this->points[$this->player2Name]->get() == 2)
-                return "Love-Thirty";
             if ($this->points[$this->player2Name]->get() == 3)
                 return "Love-Forty";
+
+            return $this->display->show();
         }
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
@@ -83,10 +86,6 @@ class TennisGame2 implements TennisGame
             if ($this->points[$this->player1Name]->get() == 2)
                 $P1res = "Thirty";
             $score = "{$P1res}-{$P2res}";
-        }
-
-        if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
-            return "Win for player2";
         }
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
