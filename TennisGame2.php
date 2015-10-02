@@ -2,7 +2,6 @@
 
 require_once "TennisGame.php";
 require_once "Score.php";
-require_once "Display.php";
 require_once "score/HumanReadableScore.php";
 require_once "score/LoveAll.php";
 require_once "score/LoveFifteen.php";
@@ -26,7 +25,7 @@ class TennisGame2 implements TennisGame
     private $points;
     private $player1Name = "";
     private $player2Name = "";
-    private $display = "";
+    private $humanReadableScore;
 
     public function __construct($player1Name, $player2Name)
     {
@@ -34,7 +33,7 @@ class TennisGame2 implements TennisGame
         $this->player2Name = $player2Name;
         $this->points[$this->player1Name] = Score::create();
         $this->points[$this->player2Name] = Score::create();
-        $this->display = Display::create();
+        $this->humanReadableScore = new LoveAll();
     }
 
     public function getScore()
@@ -58,7 +57,7 @@ class TennisGame2 implements TennisGame
             return "Advantage " . $this->player2Name;
         }
 
-        return $this->display->show();
+        return $this->humanReadableScore->value();
     }
 
     public function wonPoint($player)
@@ -66,8 +65,8 @@ class TennisGame2 implements TennisGame
         $this->points[$player]->increment();
 
         if($player == $this->player1Name)
-            $this->display->player1WonPoint();
+            $this->humanReadableScore = $this->humanReadableScore->player1WonPoint();
         else
-            $this->display->player2WonPoint();
+            $this->humanReadableScore = $this->humanReadableScore->player2WonPoint();
     }
 }
