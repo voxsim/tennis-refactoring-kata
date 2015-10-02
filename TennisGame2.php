@@ -11,6 +11,8 @@ require_once "score/FifteenAll.php";
 require_once "score/ThirtyLove.php";
 require_once "score/LoveThirty.php";
 require_once "score/LoveForty.php";
+require_once "score/FortyLove.php";
+require_once "score/ThirtyAll.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -33,12 +35,6 @@ class TennisGame2 implements TennisGame
         $score = "";
         $P1res = "";
         $P2res = "";
-        if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 3) {
-            if ($this->points[$this->player1Name]->get()==2)
-                return "Thirty-All";
-
-            return $this->display->show();
-        }
 
         if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() >= 3)
             return "Deuce";
@@ -50,16 +46,6 @@ class TennisGame2 implements TennisGame
         if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
             return "Win for player2";
         }
-
-        if ($this->points[$this->player1Name]->get() > 0 && $this->points[$this->player2Name]->get() == 0) {
-            if ($this->points[$this->player1Name]->get() == 3)
-                return "Forty-Love";
-
-            return $this->display->show();
-        }
-
-        if ($this->points[$this->player2Name]->get() > 0 && $this->points[$this->player1Name]->get() == 0)
-            return $this->display->show();
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
             if ($this->points[$this->player1Name]->get() == 2)
@@ -93,7 +79,10 @@ class TennisGame2 implements TennisGame
             return "Advantage player2";
         }
 
-        return $score;
+        if ($score != "" && $score[0] != "-" && $score[strlen($score)-1] != '-')
+            return $score;
+        else
+            return $this->display->show();
     }
 
     public function wonPoint($player)
