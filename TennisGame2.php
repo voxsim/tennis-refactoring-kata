@@ -39,10 +39,6 @@ class TennisGame2 implements TennisGame
 
     public function getScore()
     {
-        $score = "";
-        $P1res = "";
-        $P2res = "";
-
         if ($this->points[$this->player1Name]->get() == $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() >= 3)
             return "Deuce";
 
@@ -62,10 +58,7 @@ class TennisGame2 implements TennisGame
             return "Advantage " . $this->player2Name;
         }
 
-        if ($score != "" && $score[0] != "-" && $score[strlen($score)-1] != '-')
-            return $score;
-        else
-            return $this->display->show();
+        return $this->display->show();
     }
 
     public function wonPoint($player)
