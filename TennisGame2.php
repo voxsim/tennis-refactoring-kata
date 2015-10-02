@@ -16,7 +16,10 @@ require_once "score/ThirtyAll.php";
 require_once "score/ThirtyLove.php";
 require_once "score/ThirtyFifteen.php";
 require_once "score/ThirtyForty.php";
+require_once "score/FortyAll.php";
 require_once "score/FortyLove.php";
+require_once "score/FortyFifteen.php";
+require_once "score/FortyThirty.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -49,16 +52,6 @@ class TennisGame2 implements TennisGame
 
         if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
             return "Win for " . $this->player2Name;
-        }
-
-        if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
-            if ($this->points[$this->player1Name]->get() == 3)
-                $P1res = "Forty";
-            if ($this->points[$this->player2Name]->get() == 1)
-                $P2res = "Fifteen";
-            if ($this->points[$this->player2Name]->get() == 2)
-                $P2res = "Thirty";
-            $score = "{$P1res}-{$P2res}";
         }
 
         if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player2Name]->get() < 4) {

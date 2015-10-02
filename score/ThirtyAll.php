@@ -6,7 +6,7 @@ class ThirtyAll implements HumanReadableScore {
     }
 
     public function player1WonPoint() {
-        return $this;
+        return new FortyThirty();
     }
 
     public function player2WonPoint() {
