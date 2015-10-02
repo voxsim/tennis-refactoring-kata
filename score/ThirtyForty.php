@@ -1,8 +1,8 @@
 <?php
 
-class ThirtyAll implements HumanReadableScore {
+class ThirtyForty implements HumanReadableScore {
     public function value() {
-        return "Thirty-All";
+        return "Thirty-Forty";
     }
 
     public function player1WonPoint() {
@@ -10,6 +10,6 @@ class ThirtyAll implements HumanReadableScore {
     }
 
     public function player2WonPoint() {
-        return new ThirtyForty();
+        return $this;
     }
 }
