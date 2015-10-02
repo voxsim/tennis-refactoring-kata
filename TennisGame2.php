@@ -1,7 +1,7 @@
 <?php
 
 require_once "TennisGame.php";
-require_once "Score.php";
+require_once "TennisScore.php";
 require_once "score/HumanReadableScore.php";
 require_once "score/LoveAll.php";
 require_once "score/LoveFifteen.php";
@@ -31,8 +31,8 @@ class TennisGame2 implements TennisGame
     {
         $this->player1Name = $player1Name;
         $this->player2Name = $player2Name;
-        $this->points[$this->player1Name] = Score::create();
-        $this->points[$this->player2Name] = Score::create();
+        $this->points[$this->player1Name] = TennisScore::create();
+        $this->points[$this->player2Name] = TennisScore::create();
         $this->humanReadableScore = new LoveAll();
     }
 

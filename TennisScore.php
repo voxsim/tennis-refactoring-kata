@@ -1,6 +1,6 @@
 <?php
 
-class Score {
+class TennisScore {
     private $value;
 
     public function __construct($value) {
@@ -16,6 +16,6 @@ class Score {
     }
 
     public static function create() {
-        return new Score(0);
+        return new TennisScore(0);
     }
 }
