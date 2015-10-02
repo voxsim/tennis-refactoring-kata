@@ -40,11 +40,11 @@ class TennisGame2 implements TennisGame
             return "Deuce";
 
         if ($this->points[$this->player1Name]->get() >= 4 && $this->points[$this->player2Name]->get() >= 0 && ($this->points[$this->player1Name]->get() - $this->points[$this->player2Name]->get()) >= 2) {
-            return "Win for player1";
+            return "Win for " . $this->player1Name;
         }
 
         if ($this->points[$this->player2Name]->get() >= 4 && $this->points[$this->player1Name]->get() >= 0 && ($this->points[$this->player2Name]->get() - $this->points[$this->player1Name]->get()) >= 2) {
-            return "Win for player2";
+            return "Win for " . $this->player2Name;
         }
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player1Name]->get() < 4) {
@@ -72,11 +72,11 @@ class TennisGame2 implements TennisGame
         }
 
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
-            return "Advantage player1";
+            return "Advantage " . $this->player1Name;
         }
 
         if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player1Name]->get() >= 3) {
-            return "Advantage player2";
+            return "Advantage " . $this->player2Name;
         }
 
         if ($score != "" && $score[0] != "-" && $score[strlen($score)-1] != '-')
