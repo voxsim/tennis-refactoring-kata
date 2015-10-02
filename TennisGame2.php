@@ -54,16 +54,6 @@ class TennisGame2 implements TennisGame
             return "Win for " . $this->player2Name;
         }
 
-        if ($this->points[$this->player2Name]->get() > $this->points[$this->player1Name]->get() && $this->points[$this->player2Name]->get() < 4) {
-            if ($this->points[$this->player2Name]->get() == 2)
-                $P2res = "Thirty";
-            if ($this->points[$this->player2Name]->get() == 3)
-                $P2res = "Forty";
-            if ($this->points[$this->player1Name]->get() == 2)
-                $P1res = "Thirty";
-            $score = "{$P1res}-{$P2res}";
-        }
-
         if ($this->points[$this->player1Name]->get() > $this->points[$this->player2Name]->get() && $this->points[$this->player2Name]->get() >= 3) {
             return "Advantage " . $this->player1Name;
         }
