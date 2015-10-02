@@ -6,10 +6,10 @@ class FifteenAll implements HumanReadableScore {
     }
 
     public function player1WonPoint() {
-        return new ThirtyAll();
+        return new ThirtyFifteen();
     }
 
     public function player2WonPoint() {
-        return $this;
+        return new FifteenThirty();
     }
 }

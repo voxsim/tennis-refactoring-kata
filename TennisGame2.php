@@ -6,13 +6,16 @@ require_once "Display.php";
 require_once "score/HumanReadableScore.php";
 require_once "score/LoveAll.php";
 require_once "score/LoveFifteen.php";
-require_once "score/FifteenLove.php";
-require_once "score/FifteenAll.php";
-require_once "score/ThirtyLove.php";
 require_once "score/LoveThirty.php";
 require_once "score/LoveForty.php";
+require_once "score/FifteenAll.php";
+require_once "score/FifteenLove.php";
+require_once "score/FifteenThirty.php";
+require_once "score/FifteenForty.php";
+require_once "score/ThirtyLove.php";
 require_once "score/FortyLove.php";
 require_once "score/ThirtyAll.php";
+require_once "score/ThirtyFifteen.php";
 
 class TennisGame2 implements TennisGame
 {
@@ -64,8 +67,6 @@ class TennisGame2 implements TennisGame
                 $P2res = "Thirty";
             if ($this->points[$this->player2Name]->get() == 3)
                 $P2res = "Forty";
-            if ($this->points[$this->player1Name]->get() == 1)
-                $P1res = "Fifteen";
             if ($this->points[$this->player1Name]->get() == 2)
                 $P1res = "Thirty";
             $score = "{$P1res}-{$P2res}";
