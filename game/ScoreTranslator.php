@@ -11,6 +11,7 @@ class ScoreTranslator {
             ->replace('Love-Love', 'Love-All')
             ->replace('Fifteen-Fifteen', 'Fifteen-All')
             ->replace('Thirty-Thirty', 'Thirty-All')
+            ->replace('Forty-Forty', 'Deuce')
             ->value();
     }
 }
