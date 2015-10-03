@@ -8,21 +8,15 @@ class ScoreTranslator {
         $player2Name = $player2->name();
         $playersScore = $player1Score + $player2Score;
 
-        if($playersScore > 7) {
-            if (($player1Score - $player2Score) == 0)
-                return "Deuce";
-
-            if (($player1Score - $player2Score) == 2)
-                return "Win for " . $player1Name;
-
-            if (($player2Score - $player1Score) == 2)
-                return "Win for " . $player2Name;
-
-            if (($player1Score - $player2Score) == 1)
-                return "Advantage " . $player1Name;
-
-            if (($player2Score - $player1Score) == 1)
-                return "Advantage " . $player2Name;
+        if($playersScore > 8) {
+            $playersDiff = $player1Score - $player2Score;
+            $score = array();
+            $score[0] = "Deuce";
+            $score[1] = "Advantage " . $player1Name;
+            $score[-1] = "Advantage " . $player2Name;
+            $score[2] = "Win for " . $player1Name;
+            $score[-2] = "Win for " . $player2Name;
+            return $score[$playersDiff];
         }
 
         $score =  new String($player1Score.'-'.$player2Score);
@@ -35,11 +29,11 @@ class ScoreTranslator {
             ->replace('Fifteen-Fifteen', 'Fifteen-All')
             ->replace('Thirty-Thirty', 'Thirty-All')
             ->replace('Forty-Forty', 'Deuce')
-            ->replace('4-4', "Deuce")
             ->replace('4-Love', "Win for " . $player1Name)
             ->replace('4-Fifteen', "Win for " . $player1Name)
             ->replace('4-Thirty', "Win for " . $player1Name)
             ->replace('4-Forty', "Advantage " . $player1Name)
+            ->replace('4-4', "Deuce")
             ->replace('Love-4', "Win for " . $player2Name)
             ->replace('Fifteen-4', "Win for " . $player2Name)
             ->replace('Thirty-4', "Win for " . $player2Name)
