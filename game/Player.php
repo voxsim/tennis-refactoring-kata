@@ -1,21 +1,27 @@
 <?php
 
 class Player {
-    private $value;
+    private $name;
+    private $score;
 
-    public function __construct($value) {
-        $this->value = $value;
+    public function __construct($name, $score) {
+        $this->score = $score;
+        $this->name = $name;
     }
 
-    public function get() {
-        return $this->value;
+    public function name() {
+        return $this->name;
     }
 
-    public function increment() {
-        $this->value++;
+    public function score() {
+        return $this->score;
     }
 
-    public static function create() {
-        return new Player(0);
+    public function winPoint() {
+        $this->score++;
+    }
+
+    public static function create($name) {
+        return new Player($name, 0);
     }
 }

@@ -16,6 +16,7 @@ class TestMaster extends PHPUnit_Framework_TestCase
 			'2-2'   => array(2,  2,  "Thirty-All"),
 			'3-3'   => array(3,  3,  "Deuce"),
 			'4-4'   => array(4,  4,  "Deuce"),
+			'7-7'   => array(7,  7,  "Deuce"),
 
 			'1-0'   => array(1,  0,  "Fifteen-Love"),
 			'0-1'   => array(0,  1,  "Love-Fifteen"),
