@@ -1,11 +1,6 @@
 <?php
 
-require_once "TennisGame.php";
-require_once "game/Player.php";
-require_once "game/String.php";
-require_once "game/ScoreTranslator.php";
-
-class TennisGame2 implements TennisGame
+class TennisGameImpl implements TennisGame
 {
     private $players;
 

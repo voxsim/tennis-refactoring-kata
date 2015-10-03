@@ -1,9 +1,9 @@
 <?php
 
 /**
- * TennisGame2 test case.
+ * TennisGameImpl test case.
  */
-class TennisGame2Test extends TestMaster
+class TennisGameImplTest extends TestMaster
 {
 	/**
 	 * Prepares the environment before running a test.
@@ -11,7 +11,7 @@ class TennisGame2Test extends TestMaster
 	protected function setUp()
 	{
 		parent::setUp();
-		$this->_game = new TennisGame2('player1', 'player2');
+		$this->_game = new TennisGameImpl('player1', 'player2');
 	}
 
 	/**
