@@ -18,9 +18,8 @@ class TennisGameImpl implements TennisGame
         $player2Score = $this->players[1]->score();
         $player1Name = $this->players[0]->name();
         $player2Name = $this->players[1]->name();
-        $playersScore = $player1Score + $player2Score;
 
-        if($playersScore > 8) {
+        if($this->pointsAreOutOfBounds($player1Score, $player2Score)) {
             $playersDiff = $player1Score - $player2Score;
             $score = array();
             $score[0] = "Deuce";
@@ -42,6 +41,10 @@ class TennisGameImpl implements TennisGame
             ->replace('Thirty-4', "Win for " . $player2Name)
             ->replace('Forty-4', "Advantage " . $player2Name)
             ->value();
+    }
+
+    private function pointsAreOutOfBounds($player1Score, $player2Score) {
+        return $player1Score + $player2Score > 8;
     }
 
     public function wonPoint($player)
