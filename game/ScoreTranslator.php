@@ -2,12 +2,27 @@
 
 class ScoreTranslator {
     public function translate($player1Score, $player2Score) {
+        if($this->pointsAreOutOfBounds($player1Score, $player2Score)) {
+            $playersDiff = $player1Score - $player2Score;
+            $score = array();
+            $score[0] = "Deuce";
+            $score[1] = "Advantage player1";
+            $score[-1] = "Advantage player2";
+            $score[2] = "Win for player1";
+            $score[-2] = "Win for player2";
+            return new String($score[$playersDiff]);
+        }
+
         $score =  new String($player1Score.'-'.$player2Score);
         $score = $this->translatePoints($score);
         $score = $this->translateFairPlay($score);
         $score = $this->translateWinningForTheFirstPlayer($score);
         $score = $this->translateWinningForTheSecondPlayer($score);
         return $score;
+    }
+
+    private function pointsAreOutOfBounds($player1Score, $player2Score) {
+        return $player1Score + $player2Score > 8;
     }
 
     private function translatePoints($score) {
