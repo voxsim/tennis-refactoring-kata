@@ -6,12 +6,7 @@ class ScoreTranslator {
             return $this->translateGreaterThan4Dash4($player1Score, $player2Score);
         }
 
-        $score =  new String($player1Score.'-'.$player2Score);
-        $score = $this->translatePoints($score);
-        $score = $this->translateFairPlay($score);
-        $score = $this->translateWinningForTheFirstPlayer($score);
-        $score = $this->translateWinningForTheSecondPlayer($score);
-        return $score;
+        return $this->translateNormalCase($player1Score, $player2Score);
     }
 
     private function translateGreaterThan4Dash4($player1Score, $player2Score) {
@@ -28,6 +23,15 @@ class ScoreTranslator {
 
     private function pointsAreGreaterThan4Dash4($player1Score, $player2Score) {
         return $player1Score + $player2Score > 8;
+    }
+
+    private function translateNormalCase($player1Score, $player2Score) {
+        $score =  new String($player1Score.'-'.$player2Score);
+        $score = $this->translatePoints($score);
+        $score = $this->translateFairPlay($score);
+        $score = $this->translateWinningForTheFirstPlayer($score);
+        $score = $this->translateWinningForTheSecondPlayer($score);
+        return $score;
     }
 
     private function translatePoints($score) {
