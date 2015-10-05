@@ -30,7 +30,10 @@ class TennisGameImpl implements TennisGame
             return $score[$playersDiff];
         }
 
-        return $this->scoreTranslator->translate($player1Score, $player2Score)
+        $score = $this->scoreTranslator->translate($player1Score, $player2Score);
+        return $score
+            ->replace('player1', $player1Name)
+            ->replace('player2', $player2Name)
             ->replace('4-Love', "Win for " . $player1Name)
             ->replace('4-Fifteen', "Win for " . $player1Name)
             ->replace('4-Thirty', "Win for " . $player1Name)
