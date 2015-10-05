@@ -4,10 +4,9 @@ class ScoreTranslator {
     public function translate($player1Score, $player2Score) {
         $score =  new String($player1Score.'-'.$player2Score);
         $score = $this->translatePoints($score);
-        return $this->translateFairPlay($score)
-            ->replace('4-Love', "Win for player1")
-            ->replace('4-Fifteen', "Win for player1")
-            ->replace('4-Thirty', "Win for player1")
+        $score = $this->translateFairPlay($score);
+        $score = $this->translateWinningForTheFirstPlayer($score);
+        return $score
             ->replace('4-Forty', "Advantage player1")
             ->replace('Love-4', "Win for player2")
             ->replace('Fifteen-4', "Win for player2")
@@ -30,5 +29,12 @@ class ScoreTranslator {
             ->replace('Thirty-Thirty', 'Thirty-All')
             ->replace('Forty-Forty', 'Deuce')
             ->replace('4-4', "Deuce");
+    }
+
+    private function translateWinningForTheFirstPlayer($score) {
+        return $score
+            ->replace('4-Love', "Win for player1")
+            ->replace('4-Fifteen', "Win for player1")
+            ->replace('4-Thirty', "Win for player1");
     }
 }

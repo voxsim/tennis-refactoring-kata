@@ -34,15 +34,6 @@ class TennisGameImpl implements TennisGame
         return $score
             ->replace('player1', $player1Name)
             ->replace('player2', $player2Name)
-            ->replace('4-Love', "Win for " . $player1Name)
-            ->replace('4-Fifteen', "Win for " . $player1Name)
-            ->replace('4-Thirty', "Win for " . $player1Name)
-            ->replace('4-Forty', "Advantage " . $player1Name)
-            ->replace('4-4', "Deuce")
-            ->replace('Love-4', "Win for " . $player2Name)
-            ->replace('Fifteen-4', "Win for " . $player2Name)
-            ->replace('Thirty-4', "Win for " . $player2Name)
-            ->replace('Forty-4', "Advantage " . $player2Name)
             ->value();
     }
 
