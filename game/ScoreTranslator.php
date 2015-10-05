@@ -2,15 +2,8 @@
 
 class ScoreTranslator {
     public function translate($player1Score, $player2Score) {
-        if($this->pointsAreOutOfBounds($player1Score, $player2Score)) {
-            $playersDiff = $player1Score - $player2Score;
-            $score = array();
-            $score[0] = "Deuce";
-            $score[1] = "Advantage player1";
-            $score[-1] = "Advantage player2";
-            $score[2] = "Win for player1";
-            $score[-2] = "Win for player2";
-            return new String($score[$playersDiff]);
+        if($this->pointsAreGreaterThan4Dash4($player1Score, $player2Score)) {
+            return $this->translateGreaterThan4Dash4($player1Score, $player2Score);
         }
 
         $score =  new String($player1Score.'-'.$player2Score);
@@ -21,7 +14,19 @@ class ScoreTranslator {
         return $score;
     }
 
-    private function pointsAreOutOfBounds($player1Score, $player2Score) {
+    private function translateGreaterThan4Dash4($player1Score, $player2Score) {
+        $score = array();
+        $score[0] = "Deuce";
+        $score[1] = "Advantage player1";
+        $score[-1] = "Advantage player2";
+        $score[2] = "Win for player1";
+        $score[-2] = "Win for player2";
+
+        $playersDiff = $player1Score - $player2Score;
+        return new String($score[$playersDiff]);
+    }
+
+    private function pointsAreGreaterThan4Dash4($player1Score, $player2Score) {
         return $player1Score + $player2Score > 8;
     }
 
